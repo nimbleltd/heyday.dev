@@ -13,6 +13,9 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
+@ini_set( 'upload_max_size' , '200M' );
+@ini_set( 'post_max_size', '200M');
+@ini_set( 'max_execution_time', '300' );
 
 /** Various clean up functions */
 require_once( 'library/cleanup.php' );

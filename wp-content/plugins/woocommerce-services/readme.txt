@@ -1,9 +1,9 @@
 === WooCommerce Services ===
-Contributors: automattic, woothemes, allendav, kellychoffman, jkudish, jeffstieler, nabsul, robobot3000, danreylop, mikeyarce, shaunkuschel, orangesareorange, pauldechov
+Contributors: automattic, woothemes, allendav, kellychoffman, jkudish, jeffstieler, nabsul, robobot3000, danreylop, mikeyarce, shaunkuschel, orangesareorange, pauldechov, dappermountain
 Tags: canada-post, shipping, stamps, usps, woocommerce, taxes, payment, stripe
 Requires at least: 4.6
-Tested up to: 4.8
-Stable tag: 1.8.1
+Tested up to: 4.9.1
+Stable tag: 1.10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,8 +17,8 @@ With WooCommerce Services, critical services are hosted on Automattic’s best-i
 
 To use the features, simply install this plugin and activate the ones you want directly in your dashboard. As we add more services, you’ll see more features available directly in WooCommerce - making setup simpler.
 
-= Show live rates for USPS and Canada Post =
-Show your customers accurate shipping rates automatically for both USPS, the largest delivery network in the US, and Canada Post.
+= Show live rates for USPS or Canada Post =
+Show your customers accurate shipping rates automatically for USPS, the largest delivery network in the US, or Canada Post.
 
 
 = Print shipping labels for USPS at a discounted rate =
@@ -46,7 +46,7 @@ This section describes how to install the plugin and get it working.
 
 = What services are included? =
 
-* Real-time shipping rates from USPS and Canada Post
+* Real-time shipping rates from USPS or Canada Post
 * USPS label purchase/printing (domestic USA only)
 * Automated tax calculation
 * Stripe account provisioning (through WooCommerce setup wizard)
@@ -88,6 +88,35 @@ The source code is freely available [in GitHub](https://github.com/Automattic/wo
 9. Checking on the health of WooCommerce Services
 
 == Changelog ==
+
+= 1.10.1 =
+* Fix bug with product variation names in Packaging description
+
+= 1.10.0 =
+* Add WooCommerce compatibility to plugin header
+* Add ability to refresh server schemas from status page
+* Fix tax calculations for subscription products
+* Fix "limit usage to X items" coupon tax calculation
+* Fix tax calculation for product bundles and add-ons
+* Make phone number optional for shipping labels
+* Only allow label printing for stores using USD
+* Add label printing for stores in Puerto Rico
+
+= 1.9.1 =
+* Fix PHP Warning when Jetpack is disabled or missing
+* Fix plain permalinks support
+
+= 1.9.0 =
+* Add tracking numbers to completed order emails
+* Add USPS support for Puerto Rico
+* Fix some tax bugs related to discount calculation and taxable address
+* Updated Calypso-based UI
+
+= 1.8.3 =
+* Fix tax calculation in order total bug (WooCommerce 3.2+)
+
+= 1.8.2 =
+* Fix crash in the WooCommerce setup wizard when picking a supported country but an unsupported currency
 
 = 1.8.1 =
 * Fix label printing on iOS
