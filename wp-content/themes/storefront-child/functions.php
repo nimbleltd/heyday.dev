@@ -31,6 +31,27 @@ function storefront_child_header_content() { ?>
 add_action( 'storefront_child_header_content', 'jk_storefront_header_content', 40 );
 
 
+add_action( 'init', 'jk_remove_storefront_handheld_footer_bar' );
+
+function jk_remove_storefront_handheld_footer_bar() {
+  remove_action( 'storefront_footer', 'storefront_handheld_footer_bar', 999 );
+}
+
+// Customize the footer copyright portion
+add_action( 'init', 'custom_remove_footer_credit', 10 );
+
+function custom_remove_footer_credit () {
+    remove_action( 'storefront_footer', 'storefront_credit', 20 );
+    add_action( 'storefront_footer', 'custom_storefront_credit', 20 );
+}
+
+function custom_storefront_credit() {
+    ?>
+    <div class="site-info">
+        &copy;HeyDay! <?php echo get_the_date( 'Y' ); ?> <br>Built by Nimble Ltd.
+    </div><!-- .site-info -->
+    <?php
+}
 
 // function storefront_child_swap_homepage_sections() {
 // 	remove_action('homepage', 'storefront_recent_products', 30);
