@@ -154,15 +154,22 @@ class WC_Stripe_Webhook_Handler extends WC_Stripe_Payment_Gateway {
 						sleep( 5 );
 						return $this->process_payment( $order_id, false );
 					} else {
-						$message = 'API connection error and retries exhausted.';
-						$order->add_order_note( $message );
-						throw new Exception( $message );
+						$localized_message = 'API connection error and retries exhausted.';
+						$order->add_order_note( $localized_message );
+						throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 					}
 				}
 
 				// Customer param wrong? The user may have been deleted on stripe's end. Remove customer_id. Can be retried without.
 				if ( preg_match( '/No such customer/i', $response->error->message ) && $retry ) {
-					delete_user_meta( WC_Stripe_Helper::is_pre_30() ? $order->customer_user : $order->get_customer_id(), '_stripe_customer_id' );
+					if ( WC_Stripe_Helper::is_pre_30() ) {
+						delete_user_meta( $order->customer_user, '_stripe_customer_id' );
+						delete_post_meta( $order_id, '_stripe_customer_id' );
+					} else {
+						delete_user_meta( $order->get_customer_id(), '_stripe_customer_id' );
+						$order->delete_meta_data( '_stripe_customer_id' );
+						$order->save();
+					}
 
 					return $this->process_payment( $order_id, false );
 
@@ -172,23 +179,27 @@ class WC_Stripe_Webhook_Handler extends WC_Stripe_Payment_Gateway {
 					$wc_token->delete();
 					$message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
 					$order->add_order_note( $message );
-					throw new Exception( $message );
+					throw new WC_Stripe_Exception( print_r( $response, true ), $message );
 				}
 
 				$localized_messages = WC_Stripe_Helper::get_localized_messages();
 
-				$message = isset( $localized_messages[ $response->error->type ] ) ? $localized_messages[ $response->error->type ] : $response->error->message;
+				if ( 'card_error' === $response->error->type ) {
+					$localized_message = isset( $localized_messages[ $response->error->code ] ) ? $localized_messages[ $response->error->code ] : $response->error->message;
+				} else {
+					$localized_message = isset( $localized_messages[ $response->error->type ] ) ? $localized_messages[ $response->error->type ] : $response->error->message;
+				}
 
-				$order->add_order_note( $message );
+				$order->add_order_note( $localized_message );
 
-				throw new Exception( $message );
+				throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 			}
 
 			do_action( 'wc_gateway_stripe_process_webhook_payment', $response, $order );
 
 			$this->process_response( $response, $order );
 
-		} catch ( Exception $e ) {
+		} catch ( WC_Stripe_Exception $e ) {
 			WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
 
 			do_action( 'wc_gateway_stripe_process_webhook_payment_error', $e, $order );
@@ -388,8 +399,14 @@ class WC_Stripe_Webhook_Handler extends WC_Stripe_Payment_Gateway {
 		$order_id = WC_Stripe_Helper::is_pre_30() ? $order->id : $order->get_id();
 
 		if ( 'stripe' === ( WC_Stripe_Helper::is_pre_30() ? $order->payment_method : $order->get_payment_method() ) ) {
-			$charge   = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, '_transaction_id', true ) : $order->get_transaction_id();
-			$captured = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, '_stripe_charge_captured', true ) : $order->get_meta( '_stripe_charge_captured', true );
+			$charge    = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, '_transaction_id', true ) : $order->get_transaction_id();
+			$captured  = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, '_stripe_charge_captured', true ) : $order->get_meta( '_stripe_charge_captured', true );
+			$refund_id = WC_Stripe_Helper::is_pre_30() ? get_post_meta( $order_id, '_stripe_refund_id', true ) : $order->get_meta( '_stripe_refund_id', true );
+
+			// If the refund ID matches, don't continue to prevent double refunding.
+			if ( $notification->data->object->refunds->data[0]->id === $refund_id ) {
+				return;
+			}
 
 			// Only refund captured charge.
 			if ( $charge && 'yes' === $captured ) {
@@ -469,6 +486,13 @@ class WC_Stripe_Webhook_Handler extends WC_Stripe_Payment_Gateway {
 	 */
 	public function process_webhook( $request_body ) {
 		$notification = json_decode( $request_body );
+
+		/*
+		 * Hacky way to possibly prevent duplicate requests due to
+		 * frontend request and webhook payment firing at the same
+		 * time.
+		 */
+		sleep( 10 );
 
 		switch ( $notification->type ) {
 			case 'source.chargeable':

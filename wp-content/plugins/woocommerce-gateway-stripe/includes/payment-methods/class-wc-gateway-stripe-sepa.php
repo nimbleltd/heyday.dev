@@ -171,20 +171,11 @@ class WC_Gateway_Stripe_Sepa extends WC_Stripe_Payment_Gateway {
 			return false;
 		}
 
-		return parent::is_available();
-	}
+		if ( is_add_payment_method_page() && ! $this->saved_cards ) {
+			return false;
+		}
 
-	/**
-	 * All payment icons that work with Stripe.
-	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
-	 * @return array
-	 */
-	public function payment_icons() {
-		return apply_filters( 'wc_stripe_payment_icons', array(
-			'sepa' => '<i class="stripe-pf stripe-pf-sepa stripe-pf-right" alt="SEPA" aria-hidden="true"></i>',
-		) );
+		return parent::is_available();
 	}
 
 	/**
@@ -249,18 +240,18 @@ class WC_Gateway_Stripe_Sepa extends WC_Stripe_Payment_Gateway {
 		?>
 		<fieldset id="wc-<?php echo esc_attr( $this->id ); ?>-form" class="wc-payment-form">
 			<?php do_action( 'woocommerce_credit_card_form_start', $this->id ); ?>
-			<p class="wc-stripe-sepa-mandate"><?php $this->mandate_display(); ?></p>
-			<p class="form-row form-row-wide validate-required">
+			<p class="wc-stripe-sepa-mandate" style="margin-bottom:40px;"><?php $this->mandate_display(); ?></p>
+			<p class="form-row form-row-wide">
 				<label for="stripe-sepa-owner">
-					<?php esc_html_e( 'IBAN Account Name.', 'woocommerce-gateway-stripe' ); ?>
+					<?php esc_html_e( 'IBAN Account Name.', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span>
 				</label>
-				<input id="stripe-sepa-owner" name="stripe_sepa_owner" value="" />
+				<input id="stripe-sepa-owner" name="stripe_sepa_owner" value="" style="border:1px solid #ddd;margin:5px 0;padding:10px 5px;background-color:#fff;outline:0;" />
 			</p>
-			<p class="form-row form-row-wide validate-required">
+			<p class="form-row form-row-wide">
 				<label for="stripe-sepa-iban">
-					<?php esc_html_e( 'IBAN Account Number.', 'woocommerce-gateway-stripe' ); ?>
+					<?php esc_html_e( 'IBAN Account Number.', 'woocommerce-gateway-stripe' ); ?> <span class="required">*</span>
 				</label>
-				<input id="stripe-sepa-iban" name="stripe_sepa_iban" value="" />
+				<input id="stripe-sepa-iban" name="stripe_sepa_iban" value="" style="border:1px solid #ddd;margin:5px 0;padding:10px 5px;background-color:#fff;outline:0;" />
 			</p>
 			<!-- Used to display form errors -->
 			<div class="stripe-source-errors" role="alert"></div>
@@ -342,10 +333,9 @@ class WC_Gateway_Stripe_Sepa extends WC_Stripe_Payment_Gateway {
 				$new_stripe_customer->create_customer();
 			}
 
-			$prepared_source = $this->prepare_source( get_current_user_id(), $force_save_source );
+			$prepared_source = $this->prepare_source( $this->get_source_object(), get_current_user_id(), $force_save_source );
 
-			// Store source to order meta.
-			$this->save_source( $order, $prepared_source );
+			$this->save_source_to_order( $order, $prepared_source );
 
 			// Result from Stripe API request.
 			$response = null;
@@ -366,33 +356,44 @@ class WC_Gateway_Stripe_Sepa extends WC_Stripe_Payment_Gateway {
 							sleep( 5 );
 							return $this->process_payment( $order_id, false, $force_save_source );
 						} else {
-							$message = 'API connection error and retries exhausted.';
-							$order->add_order_note( $message );
-							throw new Exception( $message );
+							$localized_message = 'API connection error and retries exhausted.';
+							$order->add_order_note( $localized_message );
+							throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 						}
 					}
 
 					// Customer param wrong? The user may have been deleted on stripe's end. Remove customer_id. Can be retried without.
 					if ( preg_match( '/No such customer/i', $response->error->message ) && $retry ) {
-						delete_user_meta( WC_Stripe_Helper::is_pre_30() ? $order->customer_user : $order->get_customer_id(), '_stripe_customer_id' );
+						if ( WC_Stripe_Helper::is_pre_30() ) {
+							delete_user_meta( $order->customer_user, '_stripe_customer_id' );
+							delete_post_meta( $order_id, '_stripe_customer_id' );
+						} else {
+							delete_user_meta( $order->get_customer_id(), '_stripe_customer_id' );
+							$order->delete_meta_data( '_stripe_customer_id' );
+							$order->save();
+						}
 
 						return $this->process_payment( $order_id, false, $force_save_source );
 					} elseif ( preg_match( '/No such token/i', $response->error->message ) && $prepared_source->token_id ) {
 						// Source param wrong? The CARD may have been deleted on stripe's end. Remove token and show message.
 						$wc_token = WC_Payment_Tokens::get( $prepared_source->token_id );
 						$wc_token->delete();
-						$message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
-						$order->add_order_note( $message );
-						throw new Exception( $message );
+						$localized_message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
+						$order->add_order_note( $localized_message );
+						throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 					}
 
 					$localized_messages = WC_Stripe_Helper::get_localized_messages();
 
-					$message = isset( $localized_messages[ $response->error->type ] ) ? $localized_messages[ $response->error->type ] : $response->error->message;
+					if ( 'card_error' === $response->error->type ) {
+						$localized_message = isset( $localized_messages[ $response->error->code ] ) ? $localized_messages[ $response->error->code ] : $response->error->message;
+					} else {
+						$localized_message = isset( $localized_messages[ $response->error->type ] ) ? $localized_messages[ $response->error->type ] : $response->error->message;
+					}
 
-					$order->add_order_note( $message );
+					$order->add_order_note( $localized_message );
 
-					throw new Exception( $message );
+					throw new WC_Stripe_Exception( print_r( $response, true ), $localized_message );
 				}
 
 				do_action( 'wc_gateway_stripe_process_payment', $response, $order );
@@ -412,8 +413,8 @@ class WC_Gateway_Stripe_Sepa extends WC_Stripe_Payment_Gateway {
 				'redirect' => $this->get_return_url( $order ),
 			);
 
-		} catch ( Exception $e ) {
-			wc_add_notice( $e->getMessage(), 'error' );
+		} catch ( WC_Stripe_Exception $e ) {
+			wc_add_notice( $e->getLocalizedMessage(), 'error' );
 			WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
 
 			do_action( 'wc_gateway_stripe_process_payment_error', $e, $order );

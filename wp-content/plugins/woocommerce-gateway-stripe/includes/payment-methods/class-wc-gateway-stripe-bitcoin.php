@@ -135,6 +135,11 @@ class WC_Gateway_Stripe_Bitcoin extends WC_Stripe_Payment_Gateway {
 	 * @version 4.0.0
 	 */
 	public function get_environment_warning() {
+		// Add deprecated notice to logs.
+		if ( 'yes' === $this->enabled ) {
+			WC_Stripe_Logger::log( 'DEPRECATED! Stripe will no longer support Bitcoin and will cease to function on April 23, 2018. Please plan accordingly.' );
+		}
+
 		if ( 'yes' === $this->enabled && ! in_array( get_woocommerce_currency(), $this->get_supported_currency() ) ) {
 			$message = __( 'Bitcoin is enabled - it requires store currency to be set to USD.', 'woocommerce-gateway-stripe' );
 
@@ -170,19 +175,6 @@ class WC_Gateway_Stripe_Bitcoin extends WC_Stripe_Payment_Gateway {
 		}
 
 		return parent::is_available();
-	}
-
-	/**
-	 * All payment icons that work with Stripe.
-	 *
-	 * @since 4.0.0
-	 * @version 4.0.0
-	 * @return array
-	 */
-	public function payment_icons() {
-		return apply_filters( 'wc_stripe_payment_icons', array(
-			'bitcoin' => '<i class="stripe-pf stripe-pf-bitcoin stripe-pf-right" alt="Bitcoin" aria-hidden="true"></i>',
-		) );
 	}
 
 	/**
@@ -366,7 +358,6 @@ class WC_Gateway_Stripe_Bitcoin extends WC_Stripe_Payment_Gateway {
 	public function process_payment( $order_id, $retry = true, $force_save_source = false ) {
 		try {
 			$order = wc_get_order( $order_id );
-			$source_object = ! empty( $_POST['stripe_source'] ) ? json_decode( stripslashes( $_POST['stripe_source'] ) ) : false;
 
 			// This comes from the create account checkbox in the checkout page.
 			$create_account = ! empty( $_POST['createaccount'] ) ? true : false;
@@ -377,21 +368,19 @@ class WC_Gateway_Stripe_Bitcoin extends WC_Stripe_Payment_Gateway {
 				$new_stripe_customer->create_customer();
 			}
 
-			$prepared_source = $this->prepare_source( get_current_user_id(), $force_save_source );
+			$prepared_source = $this->prepare_source( $this->get_source_object(), get_current_user_id(), $force_save_source );
 
 			if ( empty( $prepared_source->source ) ) {
-				$error_msg = __( 'Payment processing failed. Please retry.', 'woocommerce-gateway-stripe' );
-				throw new Exception( $error_msg );
+				$localized_message = __( 'Payment processing failed. Please retry.', 'woocommerce-gateway-stripe' );
+				throw new WC_Stripe_Exception( print_r( $prepared_source, true ), $localized_message );
 			}
 
-			// Store source to order meta.
-			$this->save_source( $order, $prepared_source );
-
+			$this->save_source_to_order( $order, $prepared_source );
 
 			// This will throw exception if not valid.
 			$this->validate_minimum_order_amount( $order );
 
-			$this->save_instructions( $order, $source_object );
+			$this->save_instructions( $order, $this->get_source_object() );
 
 			// Mark as on-hold (we're awaiting the payment)
 			$order->update_status( 'on-hold', __( 'Awaiting Bitcoin payment', 'woocommerce-gateway-stripe' ) );
@@ -406,8 +395,8 @@ class WC_Gateway_Stripe_Bitcoin extends WC_Stripe_Payment_Gateway {
 				'result'    => 'success',
 				'redirect'  => $this->get_return_url( $order ),
 			);
-		} catch ( Exception $e ) {
-			wc_add_notice( $e->getMessage(), 'error' );
+		} catch ( WC_Stripe_Exception $e ) {
+			wc_add_notice( $e->getLocalizedMessage(), 'error' );
 			WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
 
 			do_action( 'wc_gateway_stripe_process_payment_error', $e, $order );

@@ -1,19 +1,15 @@
 # Popper
-Contributors: Morten Rand-Hendriksen
-Tags: accessibility-ready, light, one-column, two-column, left-sidebar, right-sidebar, responsive-layout, custom-colors, custom-header, custom-menu, featured-images, theme-options, threaded-comments, translation-ready,
-Requires at least: 3.8
-Tested up to: 4.4
-License: GPL 2.0
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-Popper is an accessible content-first theme built around beautiful fonts and lots of white space.
+Popper is an accessible content-first theme built around beautiful fonts and lots of white space designed and developed by [Morten Rand-Hendriksen](http://mor10.com) for [Lynda.com - a LinkedIn Company](http://lynda.com/mor10).
 
 ## Features
+
+### Article Decks
+To display an article deck (short one-paragraph synopsis displayed after post title, but before post meta), add a custom excerpt to the post.
 
 ### Customizer Options
 Extended options available from the Customizer:
 
-1. Site Icon displays as logo in top-right corner
+1. Optional Logo in top-right corner
 2. Header background color
 3. Header text color
 4. Optional Header image
@@ -44,3 +40,23 @@ Icons from FontAwesome: Published under various licenses http://fortawesome.gith
 
 ### Namesake
 Popper is named after philosopher Karl Popper
+
+## Changelog
+
+### 1.0.2
+- Display full header on front page and full first post on blog page when front page is set to static page
+
+### 1.0.1
+- Add Logo support to coincide with release of WordPress 4.5
+- Remove Site Icon as logo in above
+
+### 1.0.0
+- Add Continue Reading link under first post on index page
+- Simplify Continue Reading functionality in code
+- Fix translation problems
+- Add new Norsk Bokmål translation
+- Footer theme reference now points at WordPress.org Theme Directory page
+- Fix contrast in widgets (accessibility improvement)
+
+### 0.9.5
+- Remove JS function that triggers sub-menus to automatically open on single pages.

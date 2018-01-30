@@ -76,12 +76,6 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 
 			WC_Stripe_Logger::log( "Info: (Redirect) Begin processing payment for order $order_id for the amount of {$order->get_total()}" );
 
-			// Prep source object.
-			$source_object           = new stdClass();
-			$source_object->token_id = '';
-			$source_object->customer = $this->get_stripe_customer_id( $order );
-			$source_object->source   = $source;
-
 			/**
 			 * First check if the source is chargeable at this time. If not,
 			 * webhook will take care of it later.
@@ -89,11 +83,11 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 			$source_info = WC_Stripe_API::retrieve( 'sources/' . $source );
 
 			if ( ! empty( $source_info->error ) ) {
-				throw new Exception( $source_info->error->message );
+				throw new WC_Stripe_Exception( print_r( $source_info, true ), $source_info->error->message );
 			}
 
 			if ( 'failed' === $source_info->status || 'canceled' === $source_info->status ) {
-				throw new Exception( __( 'Unable to process this payment, please try again or use alternative method.', 'woocommerce-gateway-stripe' ) );
+				throw new WC_Stripe_Exception( print_r( $source_info, true ), __( 'Unable to process this payment, please try again or use alternative method.', 'woocommerce-gateway-stripe' ) );
 			}
 
 			// If already consumed, then ignore request.
@@ -105,6 +99,12 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 			if ( 'chargeable' !== $source_info->status ) {
 				return;
 			}
+
+			// Prep source object.
+			$source_object           = new stdClass();
+			$source_object->token_id = '';
+			$source_object->customer = $this->get_stripe_customer_id( $order );
+			$source_object->source   = $source_info->id;
 
 			// Make the request.
 			$response = WC_Stripe_API::request( $this->generate_payment_request( $order, $source_object ) );
@@ -118,13 +118,20 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 					} else {
 						$message = 'API connection error and retries exhausted.';
 						$order->add_order_note( $message );
-						throw new Exception( $message );
+						throw new WC_Stripe_Exception( print_r( $response, true ), $message );
 					}
 				}
 
 				// Customer param wrong? The user may have been deleted on stripe's end. Remove customer_id. Can be retried without.
 				if ( preg_match( '/No such customer/i', $response->error->message ) && $retry ) {
-					delete_user_meta( WC_Stripe_Helper::is_pre_30() ? $order->customer_user : $order->get_customer_id(), '_stripe_customer_id' );
+					if ( WC_Stripe_Helper::is_pre_30() ) {
+						delete_user_meta( $order->customer_user, '_stripe_customer_id' );
+						delete_post_meta( $order_id, '_stripe_customer_id' );
+					} else {
+						delete_user_meta( $order->get_customer_id(), '_stripe_customer_id' );
+						$order->delete_meta_data( '_stripe_customer_id' );
+						$order->save();
+					}
 
 					return $this->process_redirect_payment( $order_id, false );
 
@@ -135,33 +142,37 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 					$wc_token->delete();
 					$message = __( 'This card is no longer available and has been removed.', 'woocommerce-gateway-stripe' );
 					$order->add_order_note( $message );
-					throw new Exception( $message );
+					throw new WC_Stripe_Exception( print_r( $response, true ), $message );
 				}
 
 				$localized_messages = WC_Stripe_Helper::get_localized_messages();
 
-				$message = isset( $localized_messages[ $response->error->code ] ) ? $localized_messages[ $response->error->code ] : $response->error->message;
+				if ( 'card_error' === $response->error->type ) {
+					$message = isset( $localized_messages[ $response->error->code ] ) ? $localized_messages[ $response->error->code ] : $response->error->message;
+				} else {
+					$message = isset( $localized_messages[ $response->error->type ] ) ? $localized_messages[ $response->error->type ] : $response->error->message;
+				}
 
-				throw new Exception( $message );
+				throw new WC_Stripe_Exception( print_r( $response, true ), $message );
 			}
 
 			do_action( 'wc_gateway_stripe_process_redirect_payment', $response, $order );
 
 			$this->process_response( $response, $order );
 
-		} catch ( Exception $e ) {
+		} catch ( WC_Stripe_Exception $e ) {
 			WC_Stripe_Logger::log( 'Error: ' . $e->getMessage() );
 
 			do_action( 'wc_gateway_stripe_process_redirect_payment_error', $e, $order );
 
 			/* translators: error message */
-			$order->update_status( 'failed', sprintf( __( 'Stripe payment failed: %s', 'woocommerce-gateway-stripe' ), $e->getMessage() ) );
+			$order->update_status( 'failed', sprintf( __( 'Stripe payment failed: %s', 'woocommerce-gateway-stripe' ), $e->getLocalizedMessage() ) );
 
 			if ( $order->has_status( array( 'pending', 'failed' ) ) ) {
 				$this->send_failed_order_email( $order_id );
 			}
 
-			wc_add_notice( $e->getMessage(), 'error' );
+			wc_add_notice( $e->getLocalizedMessage(), 'error' );
 			wp_safe_redirect( wc_get_checkout_url() );
 			exit;
 		}
@@ -291,9 +302,13 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 		$replace_str     = array();
 
 		if ( array_key_exists( $field, $checkout_fields['billing'] ) ) {
-			$error_field = $checkout_fields['billing'][ $field ]['label'];
+			$error_field = __( 'Billing', 'woocommerce-gateway-stripe' ) . ' ' . $checkout_fields['billing'][ $field ]['label'];
 		} elseif ( array_key_exists( $field, $checkout_fields['shipping'] ) ) {
-			$error_field = $checkout_fields['shipping'][ $field ]['label'];
+			$error_field = __( 'Shipping', 'woocommerce-gateway-stripe' ) . ' ' . $checkout_fields['shipping'][ $field ]['label'];
+		} elseif ( array_key_exists( $field, $checkout_fields['order'] ) ) {
+			$error_field = $checkout_fields['order'][ $field ]['label'];
+		} elseif ( array_key_exists( $field, $checkout_fields['account'] ) ) {
+			$error_field = $checkout_fields['account'][ $field ]['label'];
 		} else {
 			$error_field = str_replace( '_', ' ', $field );
 
@@ -336,18 +351,11 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 		$validate_shipping_fields = false;
 		$create_account = false;
 
+		$all_fields      = apply_filters( 'wc_stripe_validate_checkout_all_fields', $all_fields );
+		$required_fields = apply_filters( 'wc_stripe_validate_checkout_required_fields', $required_fields );
+
 		array_walk_recursive( $required_fields, 'wc_clean' );
 		array_walk_recursive( $all_fields, 'wc_clean' );
-
-		// Remove unneeded required fields depending on source type.
-		if ( 'stripe_sepa' !== $source_type ) {
-			unset( $required_fields['stripe_sepa_owner'] );
-			unset( $required_fields['stripe_sepa_iban'] );
-		}
-
-		if ( 'stripe_sofort' !== $source_type ) {
-			unset( $required_fields['stripe_sofort_bank_country'] );
-		}
 
 		/**
 		 * If ship to different address checkbox is checked then we need
@@ -379,19 +387,10 @@ class WC_Stripe_Order_Handler extends WC_Stripe_Payment_Gateway {
 				continue;
 			}
 
-			// Check if is SEPA.
-			if ( 'stripe_sepa' !== $source_type && 'stripe_sepa_owner' === $field ) {
-				continue;
-			}
-
-			if ( 'stripe_sepa' !== $source_type && 'stripe_sepa_iban' === $field ) {
-				$continue;
-			}
-
 			if ( empty( $field_value ) || '-1' === $field_value ) {
 				$error_field = $this->normalize_field( $field );
 				/* translators: error field name */
-				$errors->add( 'validation', sprintf( __( '%s cannot be empty', 'woocommerce-gateway-stripe' ), $error_field ) );
+				$errors->add( 'validation', sprintf( __( '<strong>%s</strong> cannot be empty', 'woocommerce-gateway-stripe' ), $error_field ) );
 			}
 		}
 
