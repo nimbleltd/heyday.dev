@@ -74,6 +74,12 @@ function add_loginout_link( $items, $args ) {
 
 }
 
+// Remove review globally
+add_filter( 'woocommerce_product_tabs', 'helloacm_remove_product_review', 99);
+function helloacm_remove_product_review($tabs) {
+    unset($tabs['reviews']);
+    return $tabs;
+}
 // function storefront_child_swap_homepage_sections() {
 // 	remove_action('homepage', 'storefront_recent_products', 30);
 // 	remove_action('homepage', 'storefront_featured_products', 40);
