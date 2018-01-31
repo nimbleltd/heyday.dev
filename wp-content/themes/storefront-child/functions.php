@@ -53,6 +53,27 @@ function custom_storefront_credit() {
     <?php
 }
 
+// Add login log out link
+add_filter( 'wp_nav_menu_items', 'add_loginout_link', 10, 2 );
+
+function add_loginout_link( $items, $args ) {
+
+  if (is_user_logged_in() && $args->theme_location == 'primary') {
+
+   $items .= '<li><a href="'. wp_logout_url( get_permalink( woocommerce_get_page_id( 'myaccount' ) ) ) .'">log out</a></li>';
+
+  }
+
+  elseif (!is_user_logged_in() && $args->theme_location == 'primary') {
+
+   $items .= '<li><a href="' . get_permalink( woocommerce_get_page_id( 'myaccount' ) ) . '">log in</a></li>';
+
+  }
+
+  return $items;
+
+}
+
 // function storefront_child_swap_homepage_sections() {
 // 	remove_action('homepage', 'storefront_recent_products', 30);
 // 	remove_action('homepage', 'storefront_featured_products', 40);

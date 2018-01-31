@@ -1,0 +1,1261 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Wholesale Lead Capture\n"
+"POT-Creation-Date: 2018-01-23 12:34+0800\n"
+"PO-Revision-Date: 2016-10-05 11:31+0800\n"
+"Last-Translator: \n"
+"Language-Team: Rymera Web Co <josh@rymera.com.au>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-wwlc-ajax.php:322 includes/class-wwlc-scripts.php:281
+msgid "The format of the file you selected is not supported"
+msgstr ""
+
+#: includes/class-wwlc-ajax.php:326 includes/class-wwlc-scripts.php:280
+msgid "The file you selected exceeds the maximum allowed file size"
+msgstr ""
+
+#: includes/class-wwlc-bootstrap.php:213
+msgid "Street address"
+msgstr ""
+
+#: includes/class-wwlc-bootstrap.php:216
+msgid "Apartment, suite, unit etc. (optional)"
+msgstr ""
+
+#: includes/class-wwlc-bootstrap.php:219
+msgid "Town / City"
+msgstr ""
+
+#: includes/class-wwlc-bootstrap.php:222
+msgid "State / County"
+msgstr ""
+
+#: includes/class-wwlc-bootstrap.php:225
+msgid "Postcode / Zip"
+msgstr ""
+
+#: includes/class-wwlc-emails.php:250 includes/class-wwlc-settings.php:816
+msgid "New User Registration"
+msgstr ""
+
+#: includes/class-wwlc-emails.php:316 includes/class-wwlc-settings.php:846
+msgid "New User Registered And Approved"
+msgstr ""
+
+#: includes/class-wwlc-emails.php:384 includes/class-wwlc-settings.php:888
+msgid "Registration Successful"
+msgstr ""
+
+#: includes/class-wwlc-emails.php:438 includes/class-wwlc-settings.php:918
+msgid "Registration Approved"
+msgstr ""
+
+#: includes/class-wwlc-emails.php:491 includes/class-wwlc-settings.php:948
+msgid "Registration Rejected"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:222
+msgid "show"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:223
+msgid "hide"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:253
+#, php-format
+msgid ""
+"By clicking register, you agree to the <a href=\"%1$s\" target=\"_blank"
+"\">Terms & Conditions</a>"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:257 templates/wwlc-login-form.php:59
+msgid "Register"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:260 includes/class-wwlc-shortcode.php:140
+msgid "Log In"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:263 templates/wwlc-login-form.php:60
+msgid "Lost Password"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:300
+msgid "Please Leave This Empty:"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:357
+msgid "Failed to create some or all wholesale lead pages"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:382
+msgid "Wholesale Registration Page"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:417
+msgid "Wholesale Log In Page"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:453
+msgid "Wholesale Thank You Page"
+msgstr ""
+
+#: includes/class-wwlc-forms.php:711
+msgid "Confirm password"
+msgstr ""
+
+#: includes/class-wwlc-registration-form-custom-fields.php:88
+#, php-format
+msgid "Field id %1$s contains none alpha numeric character/s"
+msgstr ""
+
+#: includes/class-wwlc-registration-form-custom-fields.php:113
+#, php-format
+msgid "Duplicate field, %1$s already exists."
+msgstr ""
+
+#: includes/class-wwlc-registration-form-custom-fields.php:171
+#, php-format
+msgid "%1$s custom field that you wish to edit does not exist"
+msgstr ""
+
+#: includes/class-wwlc-registration-form-custom-fields.php:219
+#, php-format
+msgid "%1$s custom field that you wish to delete does not exist"
+msgstr ""
+
+#: includes/class-wwlc-registration-form-custom-fields.php:272
+#, php-format
+msgid "Cannot retrieve custom field, %1$s does not exist"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:107 includes/class-wwlc-scripts.php:235
+msgid "Approving User Failed"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:108 includes/class-wwlc-scripts.php:236
+msgid "Rejecting User Failed"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:109 includes/class-wwlc-scripts.php:237
+msgid "Activating User Failed"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:110 includes/class-wwlc-scripts.php:238
+msgid "Deactivating User Failed"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:124
+msgid "Select a Page"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:140
+msgid "Lead Pages Created Successfully"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:141
+msgid "Failed To Create Lead Pages"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:165
+msgid "Please Fill The Form Properly. The following fields have empty values."
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:166
+msgid "Custom Field Successfully Saved"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:167
+msgid "Failed To Save Custom Field"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:168
+msgid "Custom Field Successfully Edited"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:169
+msgid "Failed To Edit Custom Field"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:170
+msgid "Failed Retrieve Custom Field Data"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:171
+msgid "Clicking OK will remove the current custom role"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:172 includes/class-wwlc-settings.php:1373
+msgid "No Custom Fields Found"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:173
+msgid "Successfully Deleted Custom Role"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:174
+msgid "Failed To Delete Custom Field"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:175
+msgid "Option Text"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:176
+msgid "Option Value"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:177 includes/class-wwlc-settings.php:1134
+#: includes/class-wwlc-settings.php:1284 includes/class-wwlc-settings.php:1298
+msgid "Field Name"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:178 includes/class-wwlc-settings.php:1141
+#: includes/class-wwlc-settings.php:1285 includes/class-wwlc-settings.php:1299
+msgid "Field ID"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:179 includes/class-wwlc-settings.php:1149
+#: includes/class-wwlc-settings.php:1286 includes/class-wwlc-settings.php:1300
+msgid "Field Type"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:180 includes/class-wwlc-settings.php:1200
+msgid "Allowed File Types"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:181 includes/class-wwlc-settings.php:1206
+msgid "Maximum Allowed File Size"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:182 includes/class-wwlc-settings.php:1244
+#: includes/class-wwlc-settings.php:1253
+msgid "Value"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:183 includes/class-wwlc-settings.php:1229
+#: includes/class-wwlc-settings.php:1288 includes/class-wwlc-settings.php:1302
+msgid "Field Order"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:184
+msgid "Select Option Value"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:185
+msgid "Radio Option Value"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:186
+msgid "Checkbox Option Value"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:187
+msgid "Default Value, invalid email format"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:216
+msgid "Wholesale Lead License Details Successfully Saved"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:217
+msgid "Failed To Save Wholesale Lead License Details"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:266
+msgid "Please Fill The Form Appropriately"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:267
+msgid "Failed To Process Registration"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:268
+msgid "Registration Failed"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:269
+msgid "Failed To Save Settings"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:270
+msgid "This field is required"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:271
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:272
+msgid "Please enter a valid phone number"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:273
+msgid "Please check at least one option"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:274
+msgid "Please enter a number that from the minimum is divisible by "
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:275
+msgid ""
+"The maximum number must not be lesser than the minimum number. Please "
+"contact admin."
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:276
+msgid "Please enter a number that is not lesser than the allowed minimum"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:277
+msgid "Please enter a number that is not greater than the allowed maximum"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:278
+msgid "Please prove that you are human"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:279
+msgid ""
+"The file you selected is empty. Please upload something more substantial."
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:283
+msgid "Password does not match the confirm password."
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:284
+msgid "You need to agree to the terms and conditions."
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:291
+msgid "Very weak"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:292
+msgid "Weak"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:293
+msgid "Medium"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:294
+msgid "Strong"
+msgstr ""
+
+#: includes/class-wwlc-scripts.php:295
+msgid "Mismatch"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:21
+#: woocommerce-wholesale-lead-capture.plugin.php:165
+msgid "Wholesale Lead"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:48
+msgid "General"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:49
+msgid "Built In Fields"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:50
+msgid "Custom Fields"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:51
+msgid "Emails"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:52 includes/class-wwlc-settings.php:1023
+msgid "Security"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:53
+msgid "Help"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:208
+msgid "Enter custom value"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:253
+msgid "-------- Custom --------"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:273
+msgid "General Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:280
+msgid "New Lead Role"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:282
+msgid ""
+"User role that will be assigned to new approved users. Newly registered "
+"users will have role of unapproved"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:288
+msgid "Select Some User Roles..."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:294
+msgid "Show Terms & Conditions"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:296
+msgid ""
+"If checked, it will show a link to Terms & Conditions page on registration "
+"form. Please make sure to provide value to <b>Terms & Conditions Page</b> "
+"option below if you are going to enable this option"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:301
+msgid "Auto Approve New Leads"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:303
+msgid "If checked, it will auto-approve all new registrations"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:305
+msgid ""
+"Note: When enabled, users will be automatically logged-in after successful "
+"registration."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:309
+msgid "Log In Redirect Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:311
+msgid "The page where wholesale users get redirected after successful login"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:320
+msgid "Log Out Redirect Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:322
+msgid "The page where wholesale users get redirected after logging out"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:331
+msgid "Log In Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:333
+msgid "The log in page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:342
+msgid "Registration Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:344
+msgid "The registration page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:353
+msgid "Registration Thank You Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:355
+msgid ""
+"The page in which users who successfully registers gets redirected to. You "
+"will have to create this page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:364
+msgid "Terms & Conditions Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:366
+msgid "The terms & conditions page. You will have to create this page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:394
+msgid "Fields Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:401
+msgid "Registration Form Fields"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:409
+#: woocommerce-wholesale-lead-capture.options.php:73
+msgid "First Name"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:411
+msgid "First name field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:423
+msgid "First Name placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:430
+#: woocommerce-wholesale-lead-capture.options.php:86
+msgid "Last Name"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:432
+msgid "Last name field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:444
+msgid "Last Name placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:451
+msgid "Phone Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:453
+msgid "Make phone field required"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:460
+msgid "Phone field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:472
+msgid "Phone placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:480
+msgid "Phone mask/pattern"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:500
+msgid "Email Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:502
+msgid "Email field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:514
+msgid "Email placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:521 includes/class-wwlc-shortcode.php:137
+#: woocommerce-wholesale-lead-capture.options.php:125
+msgid "Username"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:523
+msgid "Enable Username"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:530
+msgid "Username field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:542
+msgid "Username placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:549
+msgid "Company Name Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:551
+msgid "Add company name field to registration form"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:558
+msgid ""
+"Make company name field required. Only used if company name field is active."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:565
+msgid "Company Name field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:577
+msgid "Company placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:584
+msgid "Address Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:586
+msgid "Add address field to registration form"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:593
+msgid "Make address field required. Only used if address field is active."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:600
+msgid "Enable address line 2 label."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:607
+msgid "Address field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:619
+msgid "Address placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:627
+msgid "Address Line 2 placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:635
+msgid "City placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:643
+msgid "State placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:651
+msgid "Postcode placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:658 includes/class-wwlc-shortcode.php:138
+#: woocommerce-wholesale-lead-capture.options.php:229
+msgid "Password"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:660
+msgid "Add password field to registration form"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:667
+msgid "Make password field required. Only used if password field is active."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:674
+msgid "Password field form order"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:686
+msgid "Password placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:694
+msgid "Enable confirm password field."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:701
+msgid "Confirm password placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:726
+msgid "Custom Fields Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:728
+msgid ""
+"Here you can add additional fields to be added on the lead capture "
+"registration form."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:762
+msgid "Emails Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:769
+msgid "Wrap emails with WooCommerce email header and footer?"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:776
+msgid "Admin Email Recipient"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:784
+msgid "Carbon Copy (CC)"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:792
+msgid "Blind Carbon Copy (BCC)"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:805
+msgid "New User Admin Notification Email Template"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:807
+msgid ""
+"Email sent to admin on every successful new user registration. <br><br>You "
+"can use these templates tags: <b>{user_management_url}</b>, "
+"<b>{user_edit_profile_url}</b>, <b>{wholesale_login_url}</b>, <b>{site_name}"
+"</b>, <b>{full_name}</b>, <b>{first_name}</b>, <b>{last_name}</b>, "
+"<b>{username}</b>, <b>{password}</b>, <b>{email}</b>, <b>{phone}</b>, "
+"<b>{company_name}</b>, <b>{address}</b>, <b>{address_1}</b>, <b>{address_2}</"
+"b>, <b>{city}</b>, <b>{state}</b>, <b>{postcode}</b>, <b>{country}</b> "
+msgstr ""
+
+#: includes/class-wwlc-settings.php:812 includes/class-wwlc-settings.php:842
+#: includes/class-wwlc-settings.php:884 includes/class-wwlc-settings.php:914
+#: includes/class-wwlc-settings.php:944
+msgid "Subject"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:835
+msgid "New User Admin Notification Email Template ( Auto Approved )"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:837
+msgid ""
+"Email sent to admin on every successful new user registration and is auto "
+"approved. <br><br>You can use these templates tags: <b>{user_management_url}"
+"</b>, <b>{user_edit_profile_url}</b>, <b>{wholesale_login_url}</b>, "
+"<b>{site_name}</b>, <b>{full_name}</b>, <b>{first_name}</b>, <b>{last_name}</"
+"b>, <b>{username}</b>, <b>{password}</b>, <b>{email}</b>, <b>{phone}</b>, "
+"<b>{company_name}</b>, <b>{address}</b>, <b>{address_1}</b>, <b>{address_2}</"
+"b>, <b>{city}</b>, <b>{state}</b>, <b>{postcode}</b>, <b>{country}</b> "
+msgstr ""
+
+#: includes/class-wwlc-settings.php:865
+msgid "New User Email Template"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:867
+msgid ""
+"Email sent to new users after successful registration. <br><br>You can use "
+"these templates tags: <b>{wholesale_login_url}</b>, <b>{site_name}</b>, "
+"<b>{full_name}</b>, <b>{first_name}</b>, <b>{last_name}</b>, <b>{username}</"
+"b>, <b>{email}</b>, <b>{phone}</b>, <b>{company_name}</b>, <b>{address}</b>, "
+"<b>{address_1}</b>, <b>{address_2}</b>, <b>{city}</b>, <b>{state}</b>, "
+"<b>{postcode}</b>, <b>{country}</b> "
+msgstr ""
+
+#: includes/class-wwlc-settings.php:872
+msgid "Disable For Auto Approved Leads"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:874
+msgid "Disable this email for leads that are auto approved"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:907
+msgid "Approval Email Template"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:909
+msgid ""
+"Email sent to users whose been approved. <br><br>You can use these templates "
+"tags: "
+msgstr ""
+
+#: includes/class-wwlc-settings.php:937
+msgid "Rejected Email Template"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:939
+msgid ""
+"Email sent to users whose been rejected. <br><br>You can use these templates "
+"tags: <b>{wholesale_login_url}</b>, <b>{site_name}</b>, <b>{full_name}</b>, "
+"<b>{first_name}</b>, <b>{last_name}</b>, <b>{email}</b>, <b>{phone}</b>, "
+"<b>{company_name}</b>, <b>{address}</b>, <b>{address_1}</b>, <b>{address_2}</"
+"b>, <b>{city}</b>, <b>{state}</b>, <b>{postcode}</b>, <b>{country}</b> "
+msgstr ""
+
+#: includes/class-wwlc-settings.php:981
+msgid "Help Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:995
+msgid "Create Necessary Pages"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:997
+msgid "Registration, Log In Form and Thank You Page"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1000
+msgid "Create Lead Pages"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1030
+msgid "Enable Recaptcha"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1032
+msgid ""
+"If checked, this will add the recaptcha field on the registration form. You "
+"can get your Recaptcha keys by going to <a href=\"https://www.google.com/"
+"recaptcha/\">https://www.google.com/recaptcha/</a>"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1143
+msgid ""
+"Must be unique. Letters, numbers and underscores only. Value will be "
+"automatically prepended with \"wwlc_cf_\""
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1151
+msgid "Text"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1152
+msgid "Text Area"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1153
+msgid "Number"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1154
+#: woocommerce-wholesale-lead-capture.options.php:112
+msgid "Email"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1155
+msgid "Url"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1156
+msgid "Select"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1157
+msgid "Radio"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1158
+msgid "Checkbox"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1159
+msgid "Hidden"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1160
+msgid "File"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1161
+msgid "Content"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1162
+msgid "Terms & Conditions"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1169
+msgid "Min:"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1174
+msgid "Max:"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1179
+msgid "Step:"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1185 includes/class-wwlc-settings.php:1190
+#: includes/class-wwlc-settings.php:1195
+msgid "Options"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1202
+msgid "Type in extension of allowed file types separated by comma"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1208
+msgid "Enter a value in megabytes"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1212 includes/class-wwlc-settings.php:1220
+msgid "Content to display"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1216 includes/class-wwlc-settings.php:1224
+msgid ""
+"Please change back to <strong>Visual</strong> editor tab to re-enable saving "
+"the field."
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1236 includes/class-wwlc-settings.php:1287
+#: includes/class-wwlc-settings.php:1301
+msgid "Required"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1243 includes/class-wwlc-settings.php:1289
+#: includes/class-wwlc-settings.php:1303
+msgid "Placeholder"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1252 includes/class-wwlc-settings.php:1290
+#: includes/class-wwlc-settings.php:1304
+msgid "Default Value"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1261 includes/class-wwlc-settings.php:1291
+#: includes/class-wwlc-settings.php:1305
+msgid "Enabled"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1272
+msgid "Cancel"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1273
+msgid "Save Custom Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1274
+msgid "Add Custom Field"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1403
+msgid "Knowledge Base"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1406
+#, php-format
+msgid ""
+"Looking for documentation? Please see our growing <a href=\"%1$s\" target="
+"\"_blank\">Knowledge Base</a>"
+msgstr ""
+
+#: includes/class-wwlc-settings.php:1449
+msgid "Email Content"
+msgstr ""
+
+#: includes/class-wwlc-shortcode.php:139
+msgid "Remember Me"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:69
+msgid "<b>Username</b>"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:72
+msgid "<b>Password</b>"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:78
+#, php-format
+msgid "%1$s  must not be empty."
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:174
+msgid "<strong>ERROR</strong>: Invalid Request"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:300
+msgid "Security check fail"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:404
+msgid ""
+"Thank you for your registration. We will be in touch shortly to discuss your "
+"account."
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:947
+#, php-format
+msgid "%1$s Unmoderated User/s | <a href=\"%2$s\">View Users</a>"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:948
+#: woocommerce-wholesale-lead-capture.bootstrap.php:119
+msgid "Hide Notice"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:1002
+msgid "Manage User:"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:1008
+#: includes/class-wwlc-user-custom-fields.php:99
+#: includes/class-wwlc-user-custom-fields.php:104
+#: includes/class-wwlc-user-custom-fields.php:294
+#: includes/class-wwlc-user-custom-fields.php:295
+msgid "Approve"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:1009
+#: includes/class-wwlc-user-custom-fields.php:100
+#: includes/class-wwlc-user-custom-fields.php:297
+#: includes/class-wwlc-user-custom-fields.php:298
+msgid "Reject"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:1010
+#: includes/class-wwlc-user-custom-fields.php:108
+#: includes/class-wwlc-user-custom-fields.php:300
+#: includes/class-wwlc-user-custom-fields.php:301
+msgid "Activate"
+msgstr ""
+
+#: includes/class-wwlc-user-account.php:1011
+#: includes/class-wwlc-user-custom-fields.php:112
+#: includes/class-wwlc-user-custom-fields.php:303
+#: includes/class-wwlc-user-custom-fields.php:304
+msgid "Deactivate"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:137
+msgid "Status"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:138
+msgid "Registration Date"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:139
+msgid "Approval Date"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:140
+msgid "Rejection Date"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:165
+msgid "Unapproved"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:167
+msgid "Rejected"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:169
+msgid "Inactive"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:171
+msgid "Active"
+msgstr ""
+
+#: includes/class-wwlc-user-custom-fields.php:245
+#: includes/class-wwlc-user-custom-fields.php:266
+#, php-format
+msgid "User %2$s."
+msgstr ""
+
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:1
+msgid "Extra profile information ( Wholesale Lead )"
+msgstr ""
+
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:15
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:35
+msgid " ( Disabled )"
+msgstr ""
+
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:24
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:41
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:51
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:58
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:73
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:86
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:101
+#: includes/views/view-wwlc-custom-fields-on-user-admin.php:108
+#, php-format
+msgid "Please enter your %1$s."
+msgstr ""
+
+#: templates/wwlc-logout-page.php:25
+#, php-format
+msgid "Hello %1$s"
+msgstr ""
+
+#: templates/wwlc-logout-page.php:26
+msgid "Log Out"
+msgstr ""
+
+#: views/wws-license-settings/view-wwlc-general-wws-settings-page.php:12
+msgid "WWS License Settings"
+msgstr ""
+
+#: views/wws-license-settings/view-wwlc-wss-settings-page.php:13
+msgid "License Email"
+msgstr ""
+
+#: views/wws-license-settings/view-wwlc-wss-settings-page.php:22
+msgid "License Key"
+msgstr ""
+
+#: views/wws-license-settings/view-wwlc-wss-settings-page.php:32
+msgid "Save Changes"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:118
+#, php-format
+msgid ""
+"Please <a href=\"%1$s\">enter your license details</a> for the "
+"<b>WooCommerce Wholesale Lead Capture</b> plugin to enable plugin updates."
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:166
+msgid "Click here to install from WordPress.org repo &rarr;"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:168
+msgid "Activate this plugin"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:168
+msgid "Click here to activate &rarr;"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:170
+#, php-format
+msgid ""
+"<br/>Please ensure you have the <a href=\"%1$s\" target=\"_blank\">%2$s</a> "
+"plugin installed and activated.<br/>"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.bootstrap.php:177
+msgid ""
+"<b>WooCommerce Wholesale Lead Capture</b> plugin missing dependency.<br/>"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:99
+msgid "Phone"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:138
+msgid "Company Name"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:151
+msgid "Country"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:164
+msgid "Address 1"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:177
+msgid "Address Line 2"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:190
+msgid "City"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:203
+msgid "State"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:216
+msgid "Postcode"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:245
+msgid "New User Registration,"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:246
+#: woocommerce-wholesale-lead-capture.options.php:252
+#, php-format
+msgid "Full Name : %1$s"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:247
+#: woocommerce-wholesale-lead-capture.options.php:253
+#, php-format
+msgid "Email : %1$s"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:251
+msgid "New User Registered and Approved,"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:254
+msgid "User is Auto Approved"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:256
+#: woocommerce-wholesale-lead-capture.options.php:263
+#: woocommerce-wholesale-lead-capture.options.php:275
+#, php-format
+msgid "Hi %1$s,"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:257
+msgid "You have successfully registered as a Wholesale customer"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:258
+msgid "We'll send you an email once your application has been approved"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:259
+msgid "Kind Regards"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:264
+msgid "Congratulations, you have been approved as a wholesale customer."
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:265
+msgid "Login using your new account to start shopping as a wholesale user."
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:266
+msgid "Please save your credentials below:"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:267
+#, php-format
+msgid "username: %1$s"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:268
+#, php-format
+msgid "password: %1$s"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:269
+msgid "login link below:"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:271
+#: woocommerce-wholesale-lead-capture.options.php:278
+msgid "Kind Regards,"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:276
+msgid ""
+"Unfortunately you have not been approved as a Wholesale customer at this "
+"time."
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.options.php:277
+msgid "If you feel this decision has been made in error please get in touch."
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.plugin.php:130
+msgid "WooCommerce WholeSale Suit License Settings"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.plugin.php:131
+msgid "WWS License"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.plugin.php:213
+msgid "Settings"
+msgstr ""
+
+#: woocommerce-wholesale-lead-capture.plugin.php:214
+msgid "License"
+msgstr ""

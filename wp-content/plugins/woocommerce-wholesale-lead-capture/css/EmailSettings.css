@@ -1,0 +1,12 @@
+.selectize-control {
+    width: 600px;
+}
+.selectize-input {
+    padding: 6px;
+}
+a.wwlc_custom_field,
+a.wwlc_custom_field:focus{
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: #00a0d2;
+}

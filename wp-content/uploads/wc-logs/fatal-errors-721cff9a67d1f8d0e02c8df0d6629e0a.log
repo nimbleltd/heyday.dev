@@ -1,0 +1,29 @@
+2018-01-31T07:52:35+00:00 CRITICAL Uncaught Error: Call to undefined function dd_filter() in /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-content/themes/storefront-child/functions.php:57
+Stack trace:
+#0 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-settings.php(424): include()
+#1 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-config.php(89): require_once('/Users/pcampbel...')
+#2 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-load.php(37): require_once('/Users/pcampbel...')
+#3 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-admin/admin-ajax.php(22): require_once('/Users/pcampbel...')
+#4 {main}
+  thrown
+
+2018-01-31T07:52:47+00:00 CRITICAL Uncaught Error: Call to undefined function dd_filter() in /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-content/themes/storefront-child/functions.php:57
+Stack trace:
+#0 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-settings.php(424): include()
+#1 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-config.php(89): require_once('/Users/pcampbel...')
+#2 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-load.php(37): require_once('/Users/pcampbel...')
+#3 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-blog-header.php(13): require_once('/Users/pcampbel...')
+#4 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/index.php(17): require('/Users/pcampbel...')
+#5 {main}
+  thrown
+
+2018-01-31T07:53:18+00:00 CRITICAL Uncaught Error: Call to undefined function dd_filter() in /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-content/themes/storefront-child/functions.php:57
+Stack trace:
+#0 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-settings.php(424): include()
+#1 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-config.php(89): require_once('/Users/pcampbel...')
+#2 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-load.php(37): require_once('/Users/pcampbel...')
+#3 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/wp-blog-header.php(13): require_once('/Users/pcampbel...')
+#4 /Users/pcampbell/Documents/nimbleLtd/flitAndFlitter/heyDay/_dev/index.php(17): require('/Users/pcampbel...')
+#5 {main}
+  thrown
+
